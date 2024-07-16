@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootcamp Widgets</title>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+        body {
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+            background-image: url(public/background.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 36.9em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            transition: none;
+        }
+
+        .header {
+            font-size: xx-large;
+            text-decoration: underline;
+            font-weight: bolder;
+            text-align: center;
+            color: white;
+            padding-bottom: 1em;
+        }
+
+        .subheading {
+            font-size: larger;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        .trans {
+            font-size: large;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: grey;
+            border-radius: 1em;
+            border: 2px solid black;
+            color: white;
+        }
+
+        .section1,
+        .section2,
+        .section3,
+        .section4,
+        .section5,
+        .section6,
+        .section7 {
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            font-size: medium;
+            text-align: center;
+            border-radius: 1em;
+            border: 3px solid grey;
+        }
+
+        .section1 {
+            background-color: #ECF6FE;
+        }
+
+        .section2 {
+            background-color: #D8ECFD;
+        }
+
+        .section3 {
+            background-color: #C5E2FC;
+        }
+
+        .section4 {
+            background-color: #B1D9FB;
+        }
+
+        .section5 {
+            background-color: #9ECFFA;
+        }
+
+        .section6 {
+            background-color: #8BC5F9;
+        }
+
+        .section7 {
+            background-color: #77BCF8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <div class="header">Bootcamp Widgets</div>
+
+        <div x-data="greet" class="section1">
+            <div class="subheading">Greet Function</div>
+            <div class="lang">
+                <input type="text" x-model="name" placeholder="Enter Your Name">
+                <select x-model="selectedLanguage">
+                    <template x-for="language in languages" :key="language">
+                        <option x-text="language"></option>
+                    </template>
+                </select>
+                <button @click="greet()">Greet</button>
+            </div>
+
+            <div x-show="">
+                <p x-text="greeting"></p>
+            </div>
+        </div>
+
+        <hr>
+
+        <div x-data="transport" class="section2">
+            <div class="subheading">Transport Fee Function</div>
+
+            <div>
+                <label>
+                    <input type="radio" name="shift" value="morning" x-model="selectedShift">
+                    Morning Shift
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" name="shift" value="afternoon" x-model="selectedShift">
+                    Afternoon Shift
+                </label>
+            </div>
+
+            <div>
+                <label>
+                    <input type="radio" name="shift" value="nightshift" x-model="selectedShift">
+                    Night Shift
+                </label>
+            </div>
+
+            <div x-show="selectedShift">
+                <div class="trans">Selected Shift: <span x-text="selectedShift"></span></div>
+                <div class="trans">Transport Fee: <span x-text="transportFee(selectedShift)"></span></div>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div x-data="phoneBill" class="section3">
+            <div class="subheading">Total Phone Bill Function</div>
+
+            <div>
+                <label for="billInput">Enter Your Phone Bill Items: </label> <br>
+                <input type="text" id="billInput" x-model="billList">
+                <button @click="calculateTotal">Calculate Total</button>
+            </div>
+            <div>
+                <p x-text="totalAmount"></p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div x-data="wordGame" class="section4">
+            <div class="subheading">Word Game Function</div>
+
+            <div>
+                <label for="sentenceInput">Enter A Sentence:</label>
+                <input type="text" id="sentenceInput" x-model="sentence">
+                <button @click="processSentence()">Submit</button>
+            </div>
+
+            <div x-show="results">
+                <p>Longest Word: <span x-text="longest"></span></p>
+                <p>Shortest Word: <span x-text="shortest"></span></p>
+                <p>Total Length of Characters: <span x-text="totalLength"></span></p>
+                <p>Total Length of Words: <span x-text="totalWords"></span></p>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./greet.js"></script>
+    <script  src="./bill.js"></script>
+    <script src="./transport.js"></script>
+    <script src="./wordgame.js"></script>
+</body>
+</html>
